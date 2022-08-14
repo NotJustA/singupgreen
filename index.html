@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sing Up</title>
+
+        <style>
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                transition: 0.1s ease;
+                font-family: "Poppins", sans-serif;
+            }
+
+            body {
+                background-color: #E8EAE0;
+                display: flex;
+            }
+
+            .left {
+                width: 41vw;
+                height: 100vh;
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-image: url(images/leafs.png);
+            }
+
+            .right {
+                width: 59vw;
+                height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .container {
+                width: 478px;
+                height: 524px;
+            }
+
+            .right .label {
+                color: #42563D;
+                font-size: 56px;
+                font-weight: 600;
+                line-height: 84px;
+                text-align: center;
+                margin-bottom: 50px;
+            }
+
+            .input {
+                height: 54px;
+                cursor: text;
+                font-size: 10px;
+                font-weight: 500;
+                padding: 8px 18px;
+                border-radius: 4px;
+                background: #DDE1CD;
+            }
+
+            .lastname, .email {
+                margin-bottom: 30px;
+            }
+
+            .password {
+                position: relative;
+                margin-bottom: 50px;
+            }
+
+            .password input {
+                width: calc(100% - 35px);
+            }
+
+            .password span {
+                top: 18px;
+                right: 18px;
+                width: 33px;
+                color: #000000;
+                cursor: pointer;
+                font-size: 12px;
+                font-weight: 500;
+                line-height: 18px;
+                text-align: right;
+                position: absolute;
+            }
+
+            .name {
+                margin-right: 15px;
+            }
+
+            .name, .lastname {
+                width: 229px;
+                display: inline-block;
+            }
+
+            .input > div {
+                opacity: 0.5;
+                color: #000000;
+                line-height: 15px;
+                margin-bottom: 5px;
+            }
+
+            input {
+                width: 100%;
+                border: none;
+                height: 18px;
+                line-height: 18px;
+                font-size: normal;
+                background: transparent;
+            }
+
+            input::-ms-reveal,
+            input::-ms-clear {
+                display: none;
+            }
+
+            input:focus {
+                outline: none;
+            }
+
+            .input:focus-within {
+                outline: 1px solid #637A30;
+                background: #F1F3E6;
+            }
+
+            .btns {
+                display: flex;
+                margin-bottom: 50px;
+                justify-content: space-between;
+            }
+
+            .btns > button {
+                width: 229px;
+                height: 46px;
+                border: none;
+                cursor: pointer;
+                font-size: 16px;
+                border-radius: 4px;
+            }
+
+            .change_method {
+                background-color: #E1E2D9;
+                font-size: 16px;
+                color: #0000007F;
+            }
+
+            .change_method:hover {
+                background: #CFD0CB;
+            }
+
+            .create {
+                color: #FFFFFF;
+                font-weight: 600;
+                border-radius: 4px;
+                background: #637A30;
+                box-shadow: 0 0 30px #637A3066;
+            }
+
+            .create:hover {
+                background: #7A9246;
+            }
+
+            .log-in-label {
+                text-align: center;
+                letter-spacing: 0.03em;
+                color: rgba(0, 0, 0, 0.7);
+            }
+
+            a {
+                color: #637A30;
+                text-decoration: none;
+            }
+
+            .ver-text {
+                font-weight: 600;
+                font-size: 171px;
+                position: absolute;
+                transform: rotate(-90deg);
+                filter: drop-shadow(0 0 30px #637A3066);
+            }
+
+            .white {
+                color: #FFFFFF;
+                position: absolute;
+                clip-path: inset(0 0 50% 0);
+            }
+
+            .green {
+                color: #637A30;
+                clip-path: inset(50% 0 0 0);
+            }
+
+        </style>
+    </head>
+
+    <body>
+
+        <div class="left"></div>
+
+        <div class="ver-text">
+            <div class="white">SING UP</div>
+            <div class="green">SING UP</div>
+        </div>
+
+        <div class="right">
+            <div class="container">
+                <div class="label">Sing up</div>
+
+                <div class="input name"
+                onclick="eclick('.name input')">
+                    <div>First Name</div>
+                    <input type="text">
+                </div>
+
+                <div class="input lastname"
+                onclick="eclick('.lastname input')">
+                    <div>Last Name</div>
+                    <input type="text">
+                </div>
+
+                <div class="input email"
+                onclick="eclick('.email input')">
+                    <div>Email</div>
+                    <input type="email">
+                </div>
+
+                <div class="input password"
+                onclick="eclick('.password input')">
+                    <div>Password</div>
+                    <input type="password">
+                    <span onclick="return false;">Show</span>
+                </div>
+
+                <div class="btns">
+                    <button class="change_method">Change Method</button>
+                    <button class="create">Create Account</button>
+                </div>
+
+                <div class="log-in-label">Arleady A Member? <a href="#login">Log in</a></div>
+            </div>
+        </div>
+        
+        <script>
+            
+            // Розташування надпису SIGN UP
+            // При зміні розміру екрана
+            let iwidth;
+            const image = document.querySelector(".left");
+            const text = document.querySelector(".ver-text");
+
+            const moveLabel = () => {
+                text.style.top = "calc(50vh - " + (text.offsetHeight / 2) + "px)";
+                text.style.left = "calc(" + image.offsetWidth + "px - " + (text.offsetWidth / 2) + "px)";
+            }
+
+            moveLabel();
+            window.onresize = moveLabel;
+
+            // "Клікання" на елемент
+            const eclick = e =>
+            event.target.tagName == "SPAN" ?
+            showPass() : document.querySelector(e).focus();
+
+            // Показування вмісту поля для паролю
+            let hidden = 1,
+            plabel = document.querySelector("span[onclick]"),
+            pinput = document.querySelector(".password input");
+            const showPass = () => {
+                switch (hidden) {
+                    case 1:
+                        hidden = 0;
+                        pinput.setAttribute("type", "text");
+                        plabel.innerHTML = "Hide"; break;
+
+                    case 0:
+                        hidden = 1;
+                        pinput.setAttribute("type", "password");
+                        plabel.innerHTML = "Show"; break;
+                }
+            }
+
+        </script>
+
+    </body>
+</html>
